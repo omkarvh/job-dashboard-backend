@@ -15,7 +15,7 @@ const app = express();
 app.use('/uploads', express.static('uploads'));
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://your-vercel-site.vercel.app"],
+  origin: ["http://localhost:5173", "https://job-dashboard-admin-three.vercel.app"],
   credentials: true
 }));
 
