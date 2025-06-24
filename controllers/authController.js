@@ -30,7 +30,7 @@ export const loginAdmin = async (req, res) => {
   res.cookie('token', token, {
     httpOnly: true,
     sameSite: 'strict',
-    secure: false, // set true in production
+    secure: true, // set true in production
     maxAge: 24 * 60 * 60 * 1000,
   });
 
