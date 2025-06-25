@@ -14,14 +14,22 @@ dotenv.config();
 const app = express();
 app.use('/uploads', express.static('uploads'));
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://job-dashboard-admin.vercel.app",
+];
+
 app.use(cors({
-  origin: [
-    "http://localhost:5173", // for local dev
-    "https://job-dashboard-admin.vercel.app",
-    "https://job-dashboard-admin-git-main-omkar-hiremaths-projects.vercel.app" // Preview deploys from Vercel
-  ],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 }));
+
 
 app.use(express.json());
 app.use(cookieParser());
