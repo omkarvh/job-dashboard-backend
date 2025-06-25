@@ -15,8 +15,12 @@ const app = express();
 app.use('/uploads', express.static('uploads'));
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://job-dashboard-admin-three.vercel.app"],
-  credentials: true
+  origin: [
+    "http://localhost:5173", // for local dev
+    "https://job-dashboard-admin.vercel.app",
+    "https://job-dashboard-admin-git-main-omkar-hiremaths-projects.vercel.app" // Preview deploys from Vercel
+  ],
+  credentials: true,
 }));
 
 app.use(express.json());
